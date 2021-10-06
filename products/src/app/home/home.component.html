@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="form-control center">
+      <label >ชื่อสินค้า</label>
+      <input type="text" class="form-control" #pdName id="pdName">
+
+       <mat-form-field appearance="fill">
+        <mat-label>ประเภทสินค้า</mat-label>
+              <mat-select #pdType id="pdType">
+                <mat-option  *ngFor="let item of typeAll" [value]="item.type_name">
+                  {{item.type_name}}
+                </mat-option>
+              </mat-select>
+       </mat-form-field>
+      <button mat-button class="btn btn-warning" (click)="addProducts(pdName.value,pdType.value)">Add</button>
+    </div>
+
+</div>
+
+
+<div style="padding: 13px;">
+    <!-- <mat-spinner *ngIf="results.length === 0"></mat-spinner> -->
+
+    <mat-card *ngFor="let item of results ;let id = index" style="margin-top:11px;">
+         <mat-card-header>
+            <mat-card-title></mat-card-title>
+            <mat-card-subtitle>ลำดับที่:{{id+1}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <p>
+            ประเภท:{{item.pd_type}}
+           </p>
+            <p>
+                สิ้นค้า : {{item.pd_name}}
+            </p>
+        </mat-card-content>
+        <mat-card-actions >
+          <button class="btn btn-warning" (click)="editPd(item.pd_id)" >Edit</button>
+          <span><button class="btn btn-danger" (click)="delPd(item.pd_id)">Delete</button></span>
+      </mat-card-actions>
+</mat-card>
+</div>
+

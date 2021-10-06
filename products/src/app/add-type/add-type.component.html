@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="form-control center">
+      <label >ประเภท</label>
+      <input type="text" class="form-control" #typeName id="typeName">
+
+      <button mat-button class="btn btn-warning" (click)="addType(typeName.value)" >Add</button>
+    </div>
+
+</div>
+
+<div style="padding: 13px;">
+    <!-- <mat-spinner *ngIf="results.length === 0"></mat-spinner> -->
+
+    <mat-card *ngFor="let item of types;let id = index" style="margin-top:11px;">
+         <mat-card-header>
+            <!-- <mat-card-title>{{item.pd_id}}</mat-card-title> -->
+            <mat-card-subtitle>ลำดับที่:{{id+1}}
+            </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <p>
+                ประเภท : {{item.type_name}}
+            </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button class="btn btn-warning" mat-button (click)="editType(item.type_id)" >Edit</button>
+          <span class="right"><button class="btn btn-danger" (click)="delType(item.type_id)">Delete</button></span>
+
+    </mat-card-actions>
+    </mat-card>
+</div>

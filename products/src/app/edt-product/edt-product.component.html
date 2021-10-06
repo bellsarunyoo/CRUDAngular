@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="form-control center">
+      <label >แก้ไขชื่อสินค้า</label>
+      <input type="text" class="form-control" #pdName id="pdName"  >
+
+       <mat-form-field appearance="fill">
+        <mat-label>แก้ไขประเภทสินค้า</mat-label>
+              <mat-select #pdType id="pdType">
+                <mat-option  *ngFor="let item of typeAll" [value]="0 || item.type_name">
+                  {{item.type_name}}
+                </mat-option>
+              </mat-select>
+       </mat-form-field>
+      <button mat-button class="btn btn-warning" (click)="updateProducts(pdName.value,pdType.value)" >Edit</button>
+    </div>
+<div style="padding: 13px;">
+    <mat-card *ngFor="let item of results " style="margin-top:11px;">
+         <mat-card-header>
+            <mat-card-title></mat-card-title>
+            <mat-card-subtitle>{{item.pd_id}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <p>
+            ประเภท:{{item.pd_type}}
+           </p>
+            <p #namepd id="namepd">
+                สิ้นค้า : {{item.pd_name}}
+            </p>
+        </mat-card-content>
+        <mat-card-actions >
+
+      </mat-card-actions>
+</mat-card>
+</div>
+</div>
+
+
+
+
